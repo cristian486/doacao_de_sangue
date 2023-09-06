@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mongodb:
+    image: 'mongo:latest'
+    restart: always
+    container_name: applicationdatabase
+    environment:
+      - 'MONGO_INITDB_DATABASE=blooddonation'
+      - 'MONGO_INITDB_ROOT_PASSWORD=QmwwT2QwTjR0MW9OCg=='
+      - 'MONGO_INITDB_ROOT_USERNAME=root'
+    ports:
+      - '27017:27017'
+    networks:
+      - bloodnetwork
+    volumes:
+      - bloodvolume:/data/db
+
+
+networks:
+  bloodnetwork:
+      driver: 'bridge'
+
+volumes:
+  bloodvolume:
+      driver: 'local'
