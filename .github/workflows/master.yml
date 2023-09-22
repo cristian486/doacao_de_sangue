@@ -36,5 +36,4 @@ jobs:
         with:
           context: /app/
           push: true
-          context: .
           tags: cristian486/blooddonation:latest
