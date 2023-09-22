@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  verify-build-generate:
+  generate-prod-build:
     runs-on: ubuntu-latest
     steps:
       - name: 'Fazendo checkout no branch'

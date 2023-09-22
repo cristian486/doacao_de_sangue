@@ -5,7 +5,7 @@ on:
       - develop
 
 jobs:
-  verify-and-build:
+  check-application:
     runs-on: ubuntu-latest
     steps:
       - name: 'Fazendo checkout no branch'
