@@ -1,5 +1,7 @@
 package br.com.application.blooddonation.infra.exception;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -13,7 +15,7 @@ import java.util.List;
 public class ErroAdviceController {
 
     @ExceptionHandler(DoacaoException.class)
-    ResponseEntity<String> tratarErro(DoacaoException ex) {
+    ResponseEntity<String> tratarErroAplicacao(DoacaoException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 
