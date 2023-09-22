@@ -33,4 +33,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
+          context: .
           tags: cristian486/blooddonation:latest
