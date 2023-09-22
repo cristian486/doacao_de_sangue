@@ -7,7 +7,7 @@ services:
     container_name: applicationdatabase
     environment:
       - 'MONGO_INITDB_DATABASE=blooddonation'
-      - 'MONGO_INITDB_ROOT_PASSWORD=QmwwT2QwTjR0MW9OCg=='
+      - 'MONGO_INITDB_ROOT_PASSWORD=QmwwT2QwTjR0MW9OCg'
       - 'MONGO_INITDB_ROOT_USERNAME=root'
     ports:
       - '27017:27017'
@@ -15,6 +15,16 @@ services:
       - bloodnetwork
     volumes:
       - bloodvolume:/data/db
+
+  backend:
+    image: cristian486/blooddonation
+    networks:
+      - bloodnetwork
+    ports:
+      - '8080:8080'
+    container_name: backend
+    environment:
+      - 'DATABASE_HOST=applicationdatabase'
 
 
 networks:
