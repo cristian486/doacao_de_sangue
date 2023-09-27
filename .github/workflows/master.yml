@@ -18,6 +18,13 @@ jobs:
           distribution: 'temurin'
       - name: 'Executando limpeza, testes e versão para produção'
         run: mvn clean test package
+        
+      - run: mkdir myStage && cp target/*.jar myStage
+
+      - uses: actions/upload-artifact@v3
+        with:
+           name: Package
+           path: myStage
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -34,6 +41,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: /app/
+          context: myStage
           push: true
           tags: cristian486/blooddonation:latest
