@@ -18,7 +18,7 @@ jobs:
           distribution: 'temurin'
       - name: 'Executando limpeza, testes e versão para produção'
         run: mvn clean test package
-        
+
       - run: mkdir myStage && cp target/*.jar myStage
 
       - uses: actions/upload-artifact@v3
@@ -37,6 +37,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: Package
+
+      - name: Display structure of downloaded files
+        run: ls -R
 
       - name: Build and push
         uses: docker/build-push-action@v5
