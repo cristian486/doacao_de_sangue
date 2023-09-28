@@ -30,7 +30,8 @@ public class ConfiguracoesSeguranca {
                 .cors(CorsConfigurer::disable)
                 .csrf(CsrfConfigurer::disable)
                 .sessionManagement(smc -> smc.sessionCreationPolicy(STATELESS))
-                .authorizeHttpRequests(a -> a.requestMatchers(HttpMethod.POST, "/login").permitAll().anyRequest().authenticated())
+                .authorizeHttpRequests(a -> a.requestMatchers(HttpMethod.POST, "/login").permitAll()
+                                             .anyRequest().authenticated())
                 .addFilterBefore(interceptor, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
