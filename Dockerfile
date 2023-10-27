@@ -1,5 +1,6 @@
 FROM eclipse-temurin:17-alpine
-COPY target/blooddonation.jar .
+WORKDIR /application
+COPY target/*.jar blooddonation.jar
 ENV SPRING_PROFILES_ACTIVE=prod
 ENV DATABASE_HOST=localhost
 ENV DATABASE_PORT=27017
