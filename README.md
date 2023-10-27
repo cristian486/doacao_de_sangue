@@ -17,3 +17,16 @@ gerir diversas funcionalidades fundamentais.
 
 A ideia principal é compreender melhor o processo de integração contínua, testes unitários e HATEOAS.
 </div>
+
+## Tecnologias utilizadas
+
+- ``Java``
+- ``Spring Boot``
+- ``Spring Data Mongo``
+- ``Spring Security``
+- ``HATEOAS``
+- ``Spring MVC``
+- ``MongoDB``
+- ``Lombok``
+- ``Bean Validation``
+- ``Github Actions (CI)``

@@ -82,7 +82,7 @@ class ValidarIntervaloTest {
     }
 
     @Test
-    @DisplayName("A doação não deve ser permitida caso um homem tente doar antes do intervalo de dois meses")
+    @DisplayName("A doação deve ser permitida caso uma mulher tente doar após o intervalo de três meses")
     void permitirDoacaoParaSexoFeminoComIntervaloDeTresMeses() {
         List<Doacao> doacoes = getDoacoes(3L);
         Mockito
