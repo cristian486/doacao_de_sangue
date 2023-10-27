@@ -11,20 +11,15 @@ jobs:
     steps:
       - name: 'Fazendo checkout no branch'
         uses: actions/checkout@v3
+
       - name: 'Fazendo setup do Java 17'
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
+
       - name: 'Executando limpeza, testes e versão para produção'
         run: mvn clean test package
-
-      - run: mkdir myStage && cp target/*.jar myStage
-
-      - uses: actions/upload-artifact@v3
-        with:
-           name: Package
-           path: myStage
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -38,15 +33,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: Package
-
-      - name: Display structure of downloaded files
-        run: ls -R
-
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
+          file: ./Dockerfile
+          context: .
           tags: cristian486/blooddonation:latest
